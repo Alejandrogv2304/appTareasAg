@@ -4,3 +4,5 @@ export const config ={
     password: '',
     database : 'tasksdb'
 }
+
+//Las credenciales para la conexión a la base de datos
