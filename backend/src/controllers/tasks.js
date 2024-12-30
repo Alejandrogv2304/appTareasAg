@@ -1,5 +1,10 @@
+import {connect} from '../databse';
+
 //Aquí definimos los métodos que se usan en el Routes
-export const getTasks = (req,res) => {
+export const getTasks = async (req,res) => {
+const db = await connect()
+const [rows]= await db.query('SELECT * FROM tasks')
+console.log(rows)
 res.send('Respuesta de Tasks de Alejandro');
 }
 

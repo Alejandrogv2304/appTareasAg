@@ -1,10 +1,10 @@
 import {config}  from "./config";
 import mysql from "mysql2/promise";
 
-const connect = async () => {
-const conn = await mysql.createConnection(config);
-const result = await conn.query('SELECT * FROM tasks ');
-console.log(result);
+//Aquí creamos la conexión a la base de datos
+
+export const connect = async () => {
+return await mysql.createConnection(config);
+
 };
 
-connect();
