@@ -1,5 +1,18 @@
 @api = http://localhost:3000/tasks
 
 GET {{api}}
+
+###
+GET {{api}}/1
+
+###
+GET {{api}}/count
+
 ###
 POST {{api}}
+Content-Type: application/json
+
+{
+    "title":"Tercera Tarea",
+    "description":"Agregando la tarea mediante POST"
+}
