@@ -26,19 +26,36 @@ res.json(rows[0])
 
 export const saveTask = async (req,res) => {
 const connection = await connect()
-const result = await connection.query('INSERT INTO tasks (title, description) VALUES (?, ?)', [
+const [results] = await connection.query('INSERT INTO tasks (title, description) VALUES (?, ?)', [
     req.body.title,
     req.body.description
 ])
-console.log(result)
+res.json({
+    id: results.insertId,
+    ... req.body,
+});
 }
+
+export const deleteTask = async (req, res) => {
+    const connection = await connect();
+  const result = await connection.execute("DELETE FROM tasks WHERE id = ?", [
+    req.params.id,
+  ]);
+  console.log(result);
+
+  res.sendStatus(204);
+};
+
 
 export const updateTask = async (req,res) => {
-res.send('Respuesta de Tasks de Alejandro');
-}
+const connection = await connect();
+await connection.query("UPDATE tasks SET ? WHERE id = ?", [
+    req.body,
+    req.params.id,
+  ]);
+  
+  res.sendStatus(204);
+};
 
-export const deleteTask = async (req,res) => {
-    res.send('Respuesta de Tasks de Alejandro');
-    }
-    
+
 
