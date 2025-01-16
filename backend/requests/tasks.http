@@ -21,9 +21,9 @@ Content-Type: application/json
 DELETE {{api}}/4
 
 ###
-PUT {{api}}/1
+PUT {{api}}/2
 Content-Type: application/json
 
 {
-    "title": "I have to dinner"
+    "description": "Description updated"
 }

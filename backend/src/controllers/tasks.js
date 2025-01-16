@@ -4,7 +4,6 @@ import {connect} from '../database';
 export const getTasks = async (req,res) => {
 const connection = await connect()
 const [rows]= await connection.query('SELECT * FROM tasks')
-console.log(rows)
 res.json(rows)
 }
 
@@ -41,8 +40,6 @@ export const deleteTask = async (req, res) => {
   const result = await connection.execute("DELETE FROM tasks WHERE id = ?", [
     req.params.id,
   ]);
-  console.log(result);
-
   res.sendStatus(204);
 };
 
