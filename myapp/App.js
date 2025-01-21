@@ -1,9 +1,32 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { Text,TouchableOpacity } from 'react-native';
 
+import HomeScreen from './screens/HomeScreen';
+import TaskFormScreen from './screens/TaskFormScreen';
+
+
+const Stack = createStackNavigator()
 const App = () => {
   return (
-    <Text>Hola Mundo</Text>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen 
+        name="HomeScreen" 
+        component={HomeScreen} 
+        options={({navigation})=>({
+          headerStyle:{backgroundColor:'#F4538A'},
+          headerTitleStyle:{color:'#ffffff'},
+          headerRight: ()=>(
+           <TouchableOpacity onPress= {()=> navigation.navigate("TaskFormScreen")}>
+           <Text>Nuevo</Text>
+           </TouchableOpacity>
+          )
+          })}/>
+        <Stack.Screen name="TaskFormScreen" component={TaskFormScreen}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
 export default App
