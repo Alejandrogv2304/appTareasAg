@@ -1,9 +1,10 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, StatusBar } from 'react-native'
 
 const Layout = ({children})=>{
     return (
       <View style={Styles.container}>
+        <StatusBar backgroundColor='#F4538A'/>
        {children}
       </View>
     )

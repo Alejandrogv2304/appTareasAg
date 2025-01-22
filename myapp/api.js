@@ -7,3 +7,16 @@ export const getTasks = async () => {
   
     return await res.json();
   };
+
+  export const saveTask = async (newTask)=>{
+     const res =await fetch(API, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify(newTask)
+  
+    });
+  return await res.json()
+  }
