@@ -8,15 +8,21 @@ export const getTasks = async () => {
     return await res.json();
   };
 
-  export const saveTask = async (newTask)=>{
-     const res =await fetch(API, {
+  export const saveTask = async (newTask) => {
+    const res = await fetch(API, {
       method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(newTask)
-  
+      body: JSON.stringify(newTask),
     });
-  return await res.json()
+    return await res.json();
+  };
+
+  export const deleteTask = async (id) => {
+    await fetch(`${API}/${id}`, {
+      method: "DELETE",
+    });
+    
   }

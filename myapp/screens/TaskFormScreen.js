@@ -1,16 +1,18 @@
 import React, {useState} from 'react'
 import { Text, TextInput, View , StyleSheet, TouchableOpacity} from 'react-native'
 import Layout from '../components/Layout'
-
-const TaskFormScreen = ()=>{
+import {saveTask} from '../api'
+const TaskFormScreen = ({ navigation })=>{
   const[task, setTask] = useState({
     title:'',
     description:''
   })
 
   const handleChange = (name,value) => setTask({...task,[name]:value});
+
   const handleSubmit = () => {
-    
+    saveTask(task);
+    navigation.navigate('HomeScreen')
   }
     return (
       <Layout>
@@ -18,12 +20,14 @@ const TaskFormScreen = ()=>{
         style={styles.input} 
         placeholder='Escribe un título' 
         placeholderTextColor='#FBF5E5'
-        onChange={(text) =>handleChange('title',text)}/>
+       
+        onChangeText={(text) => handleChange("title",text)}/>
         <TextInput 
         style={styles.input} 
         placeholder='Escribe tú tarea' 
         placeholderTextColor='#FBF5E5'
-        onChange={(text) =>handleChange('description',text)}/>
+        
+        onChangeText={(text) => handleChange("description",text)}/>
       
       <TouchableOpacity style={styles.buttonSave} onPress={handleSubmit}>
         <Text style={styles.buttonText}>Guardar</Text>
