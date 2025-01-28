@@ -8,6 +8,11 @@ export const getTasks = async () => {
     return await res.json();
   };
 
+  export const getTask = async (id) =>{
+    const res = await fetch(`${API}/${id}`) ;
+    return await res.json();
+  }
+
   export const saveTask = async (newTask) => {
     const res = await fetch(API, {
       method: "POST",

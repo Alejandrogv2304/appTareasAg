@@ -1,18 +1,21 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Text, View, StyleSheet, TouchableOpacity} from 'react-native'
 
 
-const TaskItem = ({task})=>{
+const TaskItem = ({task, handleDelete})=>{
+
+  const navigation = useNavigation()
     return (
       <View style={styles.itemsContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=> navigation.navigate('TaskFormScreen', {id :task.id})}>
         <Text style={styles.itemTitle}> {task.title}</Text>
         <Text style={styles.itemTitle}> {task.description}</Text>
         </TouchableOpacity>
         
         <TouchableOpacity 
         style={{backgroundColor:"#ee5253", borderRadius:5, padding:7}}
-        onPress={()=>console.log(task.id)}>
+        onPress={()=> handleDelete(task.id)}>
           <Text>
             Delete
           </Text>

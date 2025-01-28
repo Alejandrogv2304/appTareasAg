@@ -15,9 +15,14 @@ const TaskList = ()=>{
      loadTasks()
     },[])
 
+    const handleDelete = async (id) =>{
+        await deleteTask(id)
+        await loadTasks()
+    }
+
 
     const renderItem = ({item}) =>{
-        return <TaskItem task={item} />;
+        return <TaskItem task={item} handleDelete={handleDelete}/>;
     }
 
     const onRefresh = React.useCallback(async()=>{
